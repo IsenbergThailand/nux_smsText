@@ -8,6 +8,7 @@ package demo_nux;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -17,18 +18,32 @@ public class Demo_nux {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.UnsupportedEncodingException
      */
+    
   public static void main(String[] args) throws UnsupportedEncodingException {
     sysNewClass sysSTR = new sysNewClass();
-     String key_serect = "asjdbaidnv45687a"; 
-
-    String Bin1 =sysSTR.AsciiToBinary(key_serect);
+   /*          System.out.print("Insert smsText: ");
+        Scanner smsT = new Scanner(System.in); 
+        String  InputSMS = smsT.nextLine();
+             System.out.print("Size smsText: "+InputSMS.length());
+      System.out.print("Insert password: ");
+        Scanner pass = new Scanner(System.in); 
+        String  key_serect = pass.nextLine();
+             System.out.print("Size smsText: "+key_serect.length());*/
+    Scanner input = new Scanner(System.in);
+    String key_serect = input.nextLine();         
+  //  String key_serect = "asjdbaidnv45687a"; 
+        Scanner sms = new Scanner(System.in);
+    String InputSMS = sms.nextLine();   
+  //  String InputSMS = "ChangMai99";
+    String Bin1 =sysNewClass.AsciiToBinary(key_serect);
 
     double[] beginIn=new double[Bin1.length()];
     for ( int i=0;i<=(Bin1.length())-1;i++){
     beginIn[i] = Integer.parseInt(Bin1.substring(i,i+1));
 }
-    double sum5 = (sysSTR.sum(beginIn))/16;   
+    double sum5 = (sysNewClass.sum(beginIn))/16;   
         System.out.println(sum5);
  /////////////////////
      String[] aX = new String[10];   
@@ -42,8 +57,8 @@ public class Demo_nux {
     String[] cofY = new String[10];  
 
      for(int i=0;i<10;i++){
-          cofX[i]=sysSTR.convBinToDec3(sysSTR.AsciiToBinary(aX[i]));
-          cofY[i]=sysSTR.convBinToDec3(sysSTR.AsciiToBinary(aY[i]));
+          cofX[i]=sysNewClass.convBinToDec3(sysNewClass.AsciiToBinary(aX[i]));
+          cofY[i]=sysNewClass.convBinToDec3(sysNewClass.AsciiToBinary(aY[i]));
      }
      System.out.println(Arrays.toString(cofX));
      System.out.println(Arrays.toString(cofY));        
@@ -66,7 +81,8 @@ public class Demo_nux {
                 
    /// END Key Bin
                 
-       String InputSMS = "ChangMai99";
+
+       
        StringBuilder sbf = new StringBuilder();        
        if(decode_bin.length > 0){  
        sbf.append(decode_bin[0]);
@@ -74,7 +90,7 @@ public class Demo_nux {
        sbf.append("").append(decode_bin[i]);  } }         
        String strKey = sbf.toString();
 
- String inBin=sysSTR.AsciiToBinary(InputSMS);      
+ String inBin=sysNewClass.AsciiToBinary(InputSMS);      
  int[] binInArray=new int[inBin.length()];  
  int[] binKEYArray=new int[strKey.length()];  
  int[] binOutputArray=new int[strKey.length()]; 
@@ -104,10 +120,10 @@ String hexString = new BigInteger(s, 2).toString(16);
     
          ///// ENDING ////
      String Cipher = hexString;
-String BIN = sysSTR.hexToBinary(Cipher);
+String BIN = sysNewClass.hexToBinary(Cipher);
 
 if(BIN.length()<80){
-    BIN="0"+BIN;
+    BIN=String.format("%080d", Integer.parseInt(BIN));
 }
       System.out.println("text6 : "+BIN.length());  
       System.out.println("text6 : "+BIN);  
@@ -133,14 +149,5 @@ String hexPlain = new BigInteger(s2, 2).toString(16);
 String asciiPlain =sysSTR.convertHexToString(hexPlain);
         System.out.println("text9 : "+asciiPlain); 
      }  
-     
-     
-
-      
-     
-
-
-  
-
 
 }
