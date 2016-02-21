@@ -202,12 +202,12 @@ while (tmp1 .length() < 8) {
 }
 
 
-/*public static String hexToBinary(String hexString) {
+public static String hexToBinary2(String hexString) {
     int i = Integer.parseInt(hexString, 16);
     String binaryString = Integer.toBinaryString(i);
     String padded = String.format("%8s", binaryString.replace(' ', '0'));
     return padded;
-}*/
+}
 
 
 public static String convertHexToString(String hex){
