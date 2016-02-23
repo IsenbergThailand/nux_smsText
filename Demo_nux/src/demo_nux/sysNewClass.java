@@ -51,17 +51,17 @@ public class sysNewClass {
           return binary.toString();  
     }  
     
-String[] genXascii( String s ) throws UnsupportedEncodingException{
+String[] genXascii( String s ,int size_sms) throws UnsupportedEncodingException{
 String key_serect = s;
 // System.out.println("key 16 Chars: " + key_serect);    
-      String[] tmp1 = new String[10];
-      String[] tmp2 = new String[10];
-      String[] New1 = new String[10];
+      String[] tmp1 = new String[size_sms];
+      String[] tmp2 = new String[size_sms];
+      String[] New1 = new String[size_sms];
       int size,new_size = 0;
 int index,IndexEnd = 0;
 int index2 = 0;
 int length = 6;
-for(index=0;index<10;index++){
+for(index=0;index<size_sms;index++){
 IndexEnd=index2+length;
 if(IndexEnd>16){IndexEnd=16;}
 tmp1[index]=key_serect.substring(index2,IndexEnd); 
@@ -78,18 +78,18 @@ if(size<6){
 }
     return New1;
 }
-String[] genYascii( String s ) throws UnsupportedEncodingException{
+String[] genYascii( String s ,int size_sms) throws UnsupportedEncodingException{
 String key_serect = s;
  key_serect =new StringBuilder(key_serect).reverse().toString();   // reverse 
 // System.out.println("key 16 Chars: " + key_serect);    
-      String[] tmp1 = new String[10];
-      String[] tmp2 = new String[10];
-      String[] New1 = new String[10];
+      String[] tmp1 = new String[size_sms];
+      String[] tmp2 = new String[size_sms];
+      String[] New1 = new String[size_sms];
       int size,new_size = 0;
 int index,IndexEnd = 0;
 int index2 = 0;
 int length = 6;
-for(index=0;index<10;index++){
+for(index=0;index<size_sms;index++){
 IndexEnd=index2+length;
 if(IndexEnd>16){IndexEnd=16;}
 tmp1[index]=key_serect.substring(index2,IndexEnd); 
@@ -108,9 +108,9 @@ if(size<6){
 }
 
 
-double[] KeyPlane( double C ,double D,double yIn) throws UnsupportedEncodingException{
-    double[] toReturn = new double[12];
-    double[] yyy = new double[14];
+double[] KeyPlane( double C ,double D,double yIn,int size_sms) throws UnsupportedEncodingException{
+    double[] toReturn = new double[size_sms];
+    double[] yyy = new double[size_sms+2];
     
     Double C_cof = C; Double D_cof = D;
     
@@ -119,7 +119,7 @@ yyy[0]=yIn;
 yyy[1]=yIn;
 
 int k,j;
- for( k= 2; k < 12+2; k++){
+ for( k= 2; k < size_sms+2; k++){
       double lo=C_cof*yyy[k-2];
       double li=D_cof*yyy[k-1];
       double lp = li+lo;   
@@ -131,9 +131,16 @@ int k,j;
   return toReturn;
 }
 
-    public static String hexToBinary(String hex) {
+ /*   public static String hexToBinary(String hex) {
          String tmp1 = new BigInteger(hex, 16).toString(2);
-    return tmp1;
+         String tmp2 = String.format("%16s", Integer.toBinaryString(tmp1).replace(' ', '0'));
+    return tmp2;
+}*/
+      public static String hexToBinary(String hexString,int size) {
+          String pad_size ="%"+Integer.toString(size)+"s";
+    String tmp1 = new BigInteger(hexString, 16).toString(2);
+    String padded = String.format(pad_size, tmp1).replace(' ', '0');
+    return padded;
 }
     
      public static double sum(double...values) {
@@ -209,7 +216,6 @@ s4 = s3.replace(" ","0");
     return toReturn;
 }     
      
-  
   
   
 }
