@@ -165,7 +165,6 @@ for ( indexOfbit=1;indexOfbit<=5;indexOfbit++){
     valueOfBit[indexOfbit] = Math.pow(2,5-indexOfbit);
     decInt[indexOfbit]=newIntInput[indexOfbit]*valueOfBit[indexOfbit];
 }
-
 for ( indexOfbit=6;indexOfbit<=47;indexOfbit++){
     valueOfBit[indexOfbit] = Math.pow(2,-indexOfbit);
     decInt[indexOfbit]=newIntInput[indexOfbit]*valueOfBit[indexOfbit];

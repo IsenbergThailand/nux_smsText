@@ -14,9 +14,9 @@ import java.util.Arrays;
  */
 public class coreGenKey {
         public String genKeyMain(String key_serect, int size_sms) throws UnsupportedEncodingException{
-                sysNewClass sysSTR = new sysNewClass();
- String Bin1 =sysNewClass.AsciiToBinary(key_serect);   //// convert to binn
-  double[] beginIn=new double[Bin1.length()];
+    sysNewClass sysSTR = new sysNewClass();
+    String Bin1 =sysNewClass.AsciiToBinary(key_serect);   //// convert to binn
+    double[] beginIn=new double[Bin1.length()];
     for ( int i=0;i<=(Bin1.length())-1;i++){
     beginIn[i] = Integer.parseInt(Bin1.substring(i,i+1));  /// convert to array
 } 
@@ -40,10 +40,12 @@ public class coreGenKey {
 
      for(int i=0;i<size_sms;i++){
          double C = Double.parseDouble(cofX[i])-sum5;
-         double D = Double.parseDouble(cofX[i])-sum5;        
+         double D = Double.parseDouble(cofY[i])-sum5;        
          finP=sysSTR.KeyPlane(C,D,sum5,size_sms);    // gen Key [0.24175649366784313, 0.052027498168342845, -0.727368740026904.... 
          KP[i] = String.valueOf(finP[i]);
      }
+         System.out.println("Coe-Dec : "+Arrays.toString(KP));
+     
      
         String[] decode_bin =sysSTR.convDec2ToBin(KP);  /// conv Bin  [00011111, 00000111, 01011101...
         

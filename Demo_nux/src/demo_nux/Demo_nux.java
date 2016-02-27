@@ -25,7 +25,7 @@ public class Demo_nux {
     sysNewClass sysSTR = new sysNewClass();
     coreGenKey sysKey = new coreGenKey();
 
-  String key_serect = "asjdbaidnv45687a"; 
+  String key_serect = "Kio@398$gRu2ga!4"; 
   String InputSMS = "ChangMai995555555";
 
   int size_sms= InputSMS.length();
@@ -59,7 +59,7 @@ String hexString = new BigInteger(s, 2).toString(16);
 ///////////////// Display Ouyput/////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-    String decryptedKey = "asjdbaidnv45687a"; 
+    String decryptedKey = "Kio@398$gRu2ga!4"; 
     String Cipher = hexString;
     int size_Cip = Cipher.length()/2;
     int size_binCip =Cipher.length()*4;
